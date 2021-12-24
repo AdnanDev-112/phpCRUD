@@ -7,7 +7,6 @@ if(!isset($_SESSION['loggedin'])){
   echo "<script>alert('You need to Login first');
   window.location.href = \"./session/login.php\";
   </script>";
-// header('location: ./session/login.php');
 }
 
 $cryptkey = $_SESSION['key'];
@@ -104,26 +103,9 @@ $idsort = mysqli_num_rows($Idquery);
 
 
 
-//Using While Loop to display data from database
+// Loop to display data from database
 if($result)
 {
-//  while($row = mysqli_fetch_assoc($result)){
-// //id of the database
-//     $id = $row['Id'];
-//     $Notes = $row['notes'];
-//     echo '<tr>
-//     <th scope="row">'.$id.$idsort.'</th>
-//     <td colspan="2">'.$Notes.'</td>
-    
-//     <td>
-//     <button class="btn- btn-warning"><a href="update.php?updateid='.$id.'" class="text-decoration-none text-dark">Update</a></button>
-//     <button class="btn- btn-danger"><a href="delete.php?deleteid='.$id.'" class="text-decoration-none text-light">Delete</a></button>
-    
-//     </td>
-//   </tr>';
-//  }
-
-
 $tempVari = 0;
 
 for ($i=0; $i < $idsort; $i++) { 
@@ -157,12 +139,6 @@ for ($i=0; $i < $idsort; $i++) {
     
   </tbody>
 </table>
-
-
-
-
-
-
 
 
 
