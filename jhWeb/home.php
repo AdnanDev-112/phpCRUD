@@ -2,7 +2,10 @@
 
 include "connection.php";
 session_start();
-   $Name  =  $_SESSION['Uname'] ;
+if(isset($_SESSION['loggedin'])){
+     $Name  =  $_SESSION['Uname'] ;
+    
+  }
 
 ?>
 <!DOCTYPE html>
