@@ -13,8 +13,6 @@ $cryptkey = $_SESSION['key'];
 $UName = $_SESSION['Uname'];
 $Font = $_SESSION['font'];
 
-var_dump($_SESSION);
-
 ?>
 
 
