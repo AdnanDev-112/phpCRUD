@@ -11,7 +11,9 @@ if (!isset($_SESSION['loggedin'])) {
 
 $cryptkey = $_SESSION['key'];
 $UName = $_SESSION['Uname'];
+$Font = $_SESSION['font'];
 
+var_dump($_SESSION);
 
 ?>
 
@@ -33,6 +35,9 @@ $UName = $_SESSION['Uname'];
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Pushster&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
   body {
     font-size: 1.1rem;
@@ -51,10 +56,14 @@ $UName = $_SESSION['Uname'];
     height: 4.3rem;
     width: 7.1rem;
   }
-  .warnings{
-      color: red;
 
-    }
+  .warnings {
+    color: red;
+  }
+
+  /* .userNotes {
+    font-family: '';
+  } */
 </style>
 
 <body>
@@ -91,15 +100,29 @@ $UName = $_SESSION['Uname'];
         <div class="card-body">
           <h5 class="card-title ">Add a 📝</h5>
           <div class="form-group">
-            <textarea class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none; "></textarea>
-            <span class="mt-2 text-muted" id="characterCount">500 / 500</span>
+            <textarea class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none; font-family:'<?=$Font?>'; "></textarea>
+            <span class="mt-2 " id="characterCount">500 / 500</span>
           </div>
-          <button class="btn btn-primary mt-3 " id="addBtn" type="submit">Add Data</button>
+          <button class="btn btn-primary mt-3 " id="addBtn" type="submit">Add</button>
         </div>
       </div>
     </form>
     <hr>
     <h1>Your Notes</h1>
+    <form action="./font.php" method="POST">
+      <label for="nFont">Notes Font:</label>
+
+      <select name="fonts" id="nFont">
+        <option value=""></option>
+        <option value="Segoe UI" style="font-family: 'Segoe UI';">Default</option>
+        <option value="Poppins" style="font-family: 'Poppins';">Notes</option>
+        <option value="Pushster" style="font-family: 'Pushster';">Notes</option>
+        <option value="Lato" style="font-family: 'Lato';">Notes</option>
+
+      </select>
+      <button class="btn btn-success m-2">Apply</button>
+    </form>
+
     <hr>
     <div id="notes" class="row container-fluid">
       <!-- PhP to Dynamically Fetch Notes -->
@@ -143,7 +166,7 @@ word-wrap: break-word;
               $Notes = $row['notes'];
               echo '<tr>
   <th scope="row">' . ++$tempVari . '</th>
-  <td colspan="2">' . $Notes . '</td>
+  <td colspan="2"  style="font-family:' . $Font . ';"><p class="userNotes">' . $Notes . '</p></td>
   
   <td>
   <button class="btn- btn-warning m-1"><a href="update.php?updateid=' . $id . '" class="text-decoration-none text-dark">Update</a></button>

@@ -199,7 +199,7 @@ if (isset($_SESSION['loggedin'])) {
 
   <footer class="">
     <div class="text-center">
-      <span class="m-5 p-4"> © 2021 TwinKers Copyright</span>
+      <span class="m-5 p-4"> © 2021 EasyNotes Copyright</span>
     </div>
 
   </footer>

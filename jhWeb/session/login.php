@@ -25,6 +25,8 @@ if (isset($_POST['sub'])) {
   $sql = "SELECT * FROM `users` WHERE `password` = '$hashed' AND `cryptkey` = '$cryptkey';";
 
   $result = mysqli_query($connection, $sql);
+  $row = $result -> fetch_assoc();
+  $Font = $row['font'];
   $row_cnt = $result->num_rows;
   if ($row_cnt == 1) {
     print_r($row_cnt);
@@ -32,6 +34,7 @@ if (isset($_POST['sub'])) {
     $_SESSION['loggedin'] = true;
     $_SESSION['key'] = $cryptkey;
     $_SESSION['Uname'] = $Name;
+    $_SESSION['font'] = $Font;
     header('location: ../index.php');
   } else {
     echo '<script>
@@ -39,7 +42,6 @@ if (isset($_POST['sub'])) {
         window.location.href = "./login.php";
         
         </script>';
-    // header('location: ./login.php');
 
 
   }

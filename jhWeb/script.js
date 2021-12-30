@@ -15,3 +15,17 @@ $('textarea').on("input", function() {
     }
   $("span#characterCount").text((maxlength - currentLength < 0  || maxlength - currentLength == 0  ? "Max Words Reached" : maxlength - currentLength + " / 500") );
   });
+
+
+$( "select" )
+  .change(function () {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).val() + " ";
+    });
+    console.log(str)
+    $('.userNotes').css("font-family",`${str}`)
+    $('select').css("font-family",`${str}`)
+    $('textarea').css("font-family",`${str}`)
+  })
+  .change();

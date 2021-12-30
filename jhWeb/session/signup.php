@@ -18,6 +18,7 @@ if (isset($_POST['sub'])) {
 
   $Name = (string)$_POST['nameF'];
   $Password = (string) $_POST['passF'];
+  $Font = "Segoe UI";
 
 
 
@@ -34,7 +35,7 @@ if (isset($_POST['sub'])) {
         </script>';
   }
 
-  $sql = "INSERT INTO `users` (`username`, `password`,`cryptkey`) VALUES ('$Name', '$hashed','$cryptkey');";
+  $sql = "INSERT INTO `users` (`username`, `password`,`cryptkey`,`font`) VALUES ('$Name', '$hashed','$cryptkey','$Font');";
   $result = mysqli_query($connection, $sql);
 
   if ($result) {
@@ -42,6 +43,7 @@ if (isset($_POST['sub'])) {
     $_SESSION['loggedin'] = true;
     $_SESSION['key'] = $cryptkey;
     $_SESSION['Uname'] = $Name;
+    $_SESSION['font'] = $Font;
     header('location: ../index.php');
   } else {
     echo "Sql Failed" . mysqli_error($connection);
