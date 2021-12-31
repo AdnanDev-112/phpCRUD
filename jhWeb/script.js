@@ -23,7 +23,6 @@ $( "select" )
     $( "select option:selected" ).each(function() {
       str += $( this ).val() + " ";
     });
-    console.log(str)
     $('.userNotes').css("font-family",`${str}`)
     $('select').css("font-family",`${str}`)
     $('textarea').css("font-family",`${str}`)
@@ -31,6 +30,8 @@ $( "select" )
   .change();
 
   function copyText(btn) {
-    console.log(btn)
+    var id = btn;
+    var note = $(`#${id}`).text();
+     navigator.clipboard.writeText(note);
     
   }

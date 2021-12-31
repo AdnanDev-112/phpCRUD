@@ -7,6 +7,7 @@ $cryptkey = $_SESSION['key'];
 
 
  $Note = $_POST['noteField'];
+ $Note = filter_var($Note, FILTER_SANITIZE_STRING);
  
 
 //  ORDER BY Id DESC LIMIT 1

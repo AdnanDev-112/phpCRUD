@@ -36,6 +36,11 @@ $Font = $_SESSION['font'];
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Pushster&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+  /* Fonts for notes */
+  @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
   body {
     font-size: 1.1rem;
@@ -122,6 +127,10 @@ $Font = $_SESSION['font'];
         <option value="Poppins" style="font-family: 'Poppins';">Notes</option>
         <option value="Pushster" style="font-family: 'Pushster';">Notes</option>
         <option value="Lato" style="font-family: 'Lato';">Notes</option>
+        <option value="Chewy" style="font-family: 'Chewy';">Notes</option>
+        <option value="Markazi Text" style="font-family: 'Markazi Text';">Notes</option>
+        <option value="Archivo Black" style="font-family: 'Archivo Black';">Notes</option>
+        <option value="Montserrat" style="font-family: 'Montserrat';">Notes</option>
 
       </select>
       <button class="btn btn-success m-2">Apply</button>
@@ -169,9 +178,10 @@ word-wrap: break-word;
               $row = mysqli_fetch_assoc($result);
               $id = $row['Id'];
               $Notes = $row['notes'];
+              $tempNumb = ++$tempVari;
               echo '<tr>
-  <th scope="row">' . ++$tempVari . '</th>
-  <td colspan="2"  style="font-family:' . $Font . ';"><p class="userNotes"> ' . $Notes . '<span><button class="copy-btn" onclick="copyText(this)"><i class="bi bi-clipboard"></i></button></span></p></td>
+  <th scope="row">' . $tempNumb . '</th>
+  <td colspan="2"  style="font-family:' . $Font . ';"><p class="userNotes" id="'.$tempNumb.'"> ' . $Notes . '<button class="copy-btn" onclick="copyText('.$tempNumb.')"><i class="bi bi-clipboard"></i></button></p></td>
   
   <td>
   <button class="btn- btn-warning m-1"><a href="update.php?updateid=' . $id . '" class="text-decoration-none text-dark">Update</a></button>
