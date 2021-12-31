@@ -25,7 +25,7 @@ $Font = $_SESSION['font'];
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Notes App</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 </head>
@@ -59,9 +59,15 @@ $Font = $_SESSION['font'];
     color: red;
   }
 
-  /* .userNotes {
-    font-family: '';
-  } */
+ .copy-btn ,.copy-btn i{
+  border: none;
+  background: none;
+ }
+ .copy-btn{
+   position: relative;
+  left: 3%;
+   
+ }
 </style>
 
 <body>
@@ -101,7 +107,7 @@ $Font = $_SESSION['font'];
             <textarea class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none; font-family:'<?=$Font?>'; "></textarea>
             <span class="mt-2 " id="characterCount">500 / 500</span>
           </div>
-          <button class="btn btn-primary mt-3 " id="addBtn" type="submit">Add</button>
+          <button class="btn btn-primary mt-3 " id="addBtn" type="submit" >Add</button>
         </div>
       </div>
     </form>
@@ -119,6 +125,7 @@ $Font = $_SESSION['font'];
 
       </select>
       <button class="btn btn-success m-2">Apply</button>
+     
     </form>
 
     <hr>
@@ -164,7 +171,7 @@ word-wrap: break-word;
               $Notes = $row['notes'];
               echo '<tr>
   <th scope="row">' . ++$tempVari . '</th>
-  <td colspan="2"  style="font-family:' . $Font . ';"><p class="userNotes">' . $Notes . '</p></td>
+  <td colspan="2"  style="font-family:' . $Font . ';"><p class="userNotes"> ' . $Notes . '<span><button class="copy-btn" onclick="copyText(this)"><i class="bi bi-clipboard"></i></button></span></p></td>
   
   <td>
   <button class="btn- btn-warning m-1"><a href="update.php?updateid=' . $id . '" class="text-decoration-none text-dark">Update</a></button>

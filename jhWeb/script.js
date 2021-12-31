@@ -29,3 +29,8 @@ $( "select" )
     $('textarea').css("font-family",`${str}`)
   })
   .change();
+
+  function copyText(btn) {
+    console.log(btn)
+    
+  }
