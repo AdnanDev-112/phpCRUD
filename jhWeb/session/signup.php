@@ -17,6 +17,7 @@ if (isset($_POST['sub'])) {
 
 
   $Name = (string)$_POST['nameF'];
+  $Email = (string)$_POST['emailF'];
   $Password = (string) $_POST['passF'];
   $Font = "Segoe UI";
 
@@ -35,7 +36,7 @@ if (isset($_POST['sub'])) {
         </script>';
   }
 
-  $sql = "INSERT INTO `users` (`username`, `password`,`cryptkey`,`font`) VALUES ('$Name', '$hashed','$cryptkey','$Font');";
+  $sql = "INSERT INTO `users` (`username`,`email`, `password`,`cryptkey`,`font`) VALUES ('$Name','$Email', '$hashed','$cryptkey','$Font');";
   $result = mysqli_query($connection, $sql);
 
   if ($result) {
@@ -141,6 +142,7 @@ if (isset($_POST['sub'])) {
               </svg><span class=" m-5 title fs-1">Register</span>
               <form method="post">
                 <input type="text" name="nameF" id="userField" class="form-control my-4 py-2" placeholder="Username" />
+                <input type="email" name="emailF" id="emailField" class="form-control my-4 py-2" placeholder="Email" />
                 <div>
                   <input type="password" autocomplete="on" name="passF" id="passwordField" class="form-control mt-4 py-2 mb-2" placeholder="Password" /><i class="bi bi-eye-slash" id="togglePassword"> </i>
                 </div>
