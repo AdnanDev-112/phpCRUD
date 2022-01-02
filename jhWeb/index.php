@@ -27,53 +27,8 @@ $Font = $_SESSION['font'];
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" href="index.css">
 </head>
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Pushster&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-  /* Fonts for notes */
-  @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Markazi+Text&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-  body {
-    font-size: 1.1rem;
-  }
-
-  .container button {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  nav {
-    font-family: 'Shizuru', cursive;
-    font-size: 2.2rem;
-  }
-
-  #logo {
-    height: 4.3rem;
-    width: 7.1rem;
-  }
-
-  .warnings {
-    color: red;
-  }
-
- .copy-btn ,.copy-btn i{
-  border: none;
-  background: none;
- }
- .copy-btn{
-   position: relative;
-  left: 3%;
-   
- }
-</style>
 
 <body>
 
@@ -103,13 +58,12 @@ $Font = $_SESSION['font'];
   </nav>
 
   <div class="container my-4" id="item-container">
-    <h1>Welcome <?= $UName ?></h1>
+    <h1>Welcome <?= $UName ?> !</h1>
     <form method="post" action="add.php">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title ">Add a 📝</h5>
           <div class="form-group">
-            <textarea class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none; font-family:'<?=$Font?>'; "></textarea>
+            <textarea placeholder="Add a 📝" class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none; font-family:'<?=$Font?>'; "></textarea>
             <span class="mt-2 " id="characterCount">500 / 500</span>
           </div>
           <button class="btn btn-primary mt-3 " id="addBtn" type="submit" >Add</button>
@@ -117,7 +71,7 @@ $Font = $_SESSION['font'];
       </div>
     </form>
     <hr>
-    <h1>Your Notes</h1>
+    <!-- <h2>Your Notes</h2> -->
     <form action="./font.php" method="POST">
       <label for="nFont">Notes Font:</label>
 
@@ -128,7 +82,6 @@ $Font = $_SESSION['font'];
         <option value="Pushster" style="font-family: 'Pushster';">Notes</option>
         <option value="Lato" style="font-family: 'Lato';">Notes</option>
         <option value="Chewy" style="font-family: 'Chewy';">Notes</option>
-        <option value="Markazi Text" style="font-family: 'Markazi Text';">Notes</option>
         <option value="Archivo Black" style="font-family: 'Archivo Black';">Notes</option>
         <option value="Montserrat" style="font-family: 'Montserrat';">Notes</option>
 
@@ -146,9 +99,9 @@ word-wrap: break-word;
    ">
         <thead>
           <tr>
-            <th scope="col" colspan="1">Sr no🔢</th>
-            <th scope="col" colspan="2">Note 📓</th>
-            <th scope="col" colspan="1">Task ⚒</th>
+            <th scope="col" colspan="1">Sr no &nbsp; <i class="bi bi-list-ol"></i> </th>
+            <th scope="col" colspan="2">Note &nbsp; 📓</th>
+            <th scope="col" colspan="1">Task &nbsp; <i class="bi bi-cpu"></i></th>
 
 
 
@@ -181,11 +134,11 @@ word-wrap: break-word;
               $tempNumb = ++$tempVari;
               echo '<tr>
   <th scope="row">' . $tempNumb . '</th>
-  <td colspan="2"  style="font-family:' . $Font . ';"><p class="userNotes" id="'.$tempNumb.'"> ' . $Notes . '<button class="copy-btn" onclick="copyText('.$tempNumb.')"><i class="bi bi-clipboard"></i></button></p></td>
+  <td colspan="2"  style="font-family:' . $Font . ';"><p class="userNotes" id="'.$tempNumb.'"> ' . $Notes . '<button class="copy-btn" onclick="copyText('.$tempNumb.')"><span class="copy-txt">Copy Note</span><i class="bi bi-clipboard"></i></button></p></td>
   
   <td>
   <button class="btn- btn-warning m-1"><a href="update.php?updateid=' . $id . '" class="text-decoration-none text-dark">Update</a></button>
-  <button class="btn- btn-danger m-1"><a href="delete.php?deleteid=' . $id . '" class="text-decoration-none text-light">Delete</a></button>
+  <button class="btn- btn-danger m-1"><a href="delete.php?deleteid=' . $id . '" class="text-decoration-none text-light trash-icon"><i class="bi bi-trash"></i></a></button>
   
   </td>
 </tr>';

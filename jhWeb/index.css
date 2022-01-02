@@ -1,0 +1,90 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pushster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+/* Fonts for notes */
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+  font-size: 1.1rem;
+   
+}
+.card-body,body,.form-control,select{
+ background-color: rgb(255, 245, 225) ; 
+}
+
+.form-control{
+    background-color:rgb(255, 246, 232) ;
+}
+
+.container button {
+  font-family: 'Roboto', sans-serif;
+}
+
+nav {
+  font-family: 'Shizuru', cursive;
+  font-size: 2.2rem;
+}
+
+#logo {
+  height: 4.3rem;
+  width: 7.1rem;
+}
+
+
+.warnings {
+  color: red;
+}
+
+.copy-btn ,.copy-btn i{
+border: none;
+background: none;
+}
+.copy-btn{
+ position: relative;
+left: 3%;
+ 
+}
+
+.userNotes{
+    font-weight: 500;
+}
+
+
+/* Copy Note Css */
+.copy-txt {
+    visibility: hidden;
+    width: 8.75rem;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -4.68rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .copy-txt::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -2px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .copy-btn:hover .copy-txt {
+    visibility: visible;
+    opacity: 1;
+  }

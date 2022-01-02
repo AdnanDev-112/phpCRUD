@@ -67,6 +67,7 @@ if (isset($_POST['sub'])) {
 
     body {
       font-size: 1.1rem;
+      background-color: rgb(255, 245, 225);
     }
 
     nav {

@@ -16,48 +16,9 @@ if (isset($_SESSION['loggedin'])) {
 
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="home.css">
   <title>Home</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-
-    nav {
-      font-family: 'Shizuru', cursive;
-      font-size: 2.2rem;
-    }
-
-    .carousel-item {
-      width: 100%;
-      height: 31rem;
-      background-color: black;
-    }
-
-    .overlay-image {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: 0;
-      background-position: center;
-      background-size: cover;
-      opacity: 0.5;
-    }
-
-    #logo {
-      height: 4.3rem;
-      width: 7.1rem;
-    }
-    .action-btn{
-      font-family: 'Roboto', sans-serif;
-
-    }
-    .lead{
-      font-family: 'Open Sans', sans-serif;
-    }
-  </style>
+  
 </head>
 
 <body>
@@ -138,7 +99,7 @@ if (isset($_SESSION['loggedin'])) {
 
         <div class="carousel-caption  d-block">
           <h5 class="fs-1">Don't have a Pen? </h5>
-          <p class="fs-3">No Problem! Use Twinkers</p>
+          <p class="fs-3">No Problem! Use EasyNotes</p>
         </div>
       </div>
     </div>
@@ -152,6 +113,18 @@ if (isset($_SESSION['loggedin'])) {
     </button>
   </div>
 
+  <!-- Typing Notes -->
+  <div class="wrapper">
+    <div class="static-txt">You can Write</div>
+    <ul class="dynamic-txts">
+      <li><span>Notes</span></li>
+      <li><span>Ideas</span></li>
+      <li><span>Thoughts</span></li>
+      <li><span> Your Diary</span></li>
+    </ul>
+  </div>
+
+  <!-- Features -->
   <div class="container marketing">
 
 

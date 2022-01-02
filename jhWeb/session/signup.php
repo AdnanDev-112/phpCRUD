@@ -70,8 +70,9 @@ if (isset($_POST['sub'])) {
     @import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-    body {
+    body{
     font-size: 1.1rem;
+    background-color: rgb(255, 245, 225);
   }
 
     nav {
