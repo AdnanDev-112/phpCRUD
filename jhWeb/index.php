@@ -63,7 +63,7 @@ $Font = $_SESSION['font'];
       <div class="card">
         <div class="card-body">
           <div class="form-group">
-            <textarea placeholder="Add  📝" class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none; font-family:'<?=$Font?>'; "></textarea>
+            <textarea placeholder="Add a 📝" class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none; font-family:'<?=$Font?>'; "></textarea>
             <span class="mt-2 " id="characterCount">500 / 500</span>
           </div>
           <button class="btn btn-primary mt-3 " id="addBtn" type="submit" >Add</button>
