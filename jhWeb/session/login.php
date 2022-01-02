@@ -139,7 +139,7 @@ if (isset($_POST['sub'])) {
               </svg><span class=" m-5 title fs-1">Login</span>
               <form method="post">
                 <input type="text" name="nameF" id="userField" class="form-control my-4 py-2 passBox" placeholder="Username" />
-                <!-- <div class="form-group"> -->
+                
                 <div>
                   <input type="password" name="passF" id="passwordField" class="form-control mt-4 py-2 mb-2" placeholder="Password" autocomplete="on" /> <i class="bi bi-eye-slash" id="togglePassword"> </i>
                 </div>

@@ -31,7 +31,7 @@ $( "select" )
 
   function copyText(btn) {
     var id = btn;
-    var note = $(`#${id}`).text();
+    var note = $(`#${id}`).clone().children().remove().end().text();
      navigator.clipboard.writeText(note);
     
   }

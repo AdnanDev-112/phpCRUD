@@ -1,16 +1,23 @@
 <?php
 session_start();
-$name = $_SESSION['Tname'];
-$tempK = $_SESSION['Tcrypt'];
+$name = $_SESSION['Tn'];
+$tempK = $_SESSION['Tc'];
 
 
 include "../connection.php";
 if (isset($_SESSION['loggedin'])) {
-    unset($_SESSION['Tname']);
-    unset($_SESSION['Tcrypt']);
+    unset($_SESSION['Tn']);
+    unset($_SESSION['Tc']);
     echo '<script>
           alert("Not Allowed!");
           window.location.href = "../index.php";
+          
+          </script>';
+  }
+  if(!isset($_SESSION['Tn']) || !isset($_SESSION['Tc'])){
+    echo '<script>
+          alert("Not Allowed!");
+          window.location.href = "../home.php";
           
           </script>';
   }
@@ -20,8 +27,8 @@ if(isset($_GET['token'])){
     $checkToken = "SELECT `token` FROM `users` WHERE `token` = '$token' ";
 
     if(mysqli_query($connection,$checkToken)->num_rows == 0){
-        unset($_SESSION['Tname']);
-        unset($_SESSION['Tcrypt']);
+        unset($_SESSION['Tn']);
+        unset($_SESSION['Tc']);
         echo '<script>
         alert("Not Allowed!");
         window.location.href = "../home.php";
@@ -41,15 +48,15 @@ if(isset($_GET['token'])){
     mysqli_query($connection,$setFK);
     // Queries
     $setPass = "UPDATE `users` SET `password`= '$hashed', `cryptkey` = '$cryptkey' WHERE `token`= '$token'";
-    $setcrypt =  "UPDATE `data` SET `cryptkey` = '$cryptkey' WHERE `cryptkey` = '$tempK';";
+    $setc =  "UPDATE `data` SET `cryptkey` = '$cryptkey' WHERE `cryptkey` = '$tempK';";
     $setStatus = mysqli_query($connection,$setPass) or die(mysqli_error($connection));
-    $setCrypt = mysqli_query($connection,$setcrypt) or die(mysqli_error($connection));
-    if($setStatus && $setCrypt){
+    $setC = mysqli_query($connection,$setc) or die(mysqli_error($connection));
+    if($setStatus && $setC){
         $nullToken = "UPDATE `users` SET `token` = '' WHERE `token` = '$token';";
         $result = mysqli_query($connection,$nullToken);
         if($result){
-            unset($_SESSION['Tname']);
-            unset($_SESSION['Tcrypt']);
+            unset($_SESSION['Tn']);
+            unset($_SESSION['Tc']);
             $resetFK ="SET FOREIGN_KEY_CHECKS = 1";
             mysqli_query($connection,$resetFK);
             echo '<script>
@@ -71,7 +78,8 @@ if(isset($_GET['token'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Reset</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   
@@ -96,10 +104,13 @@ if(isset($_GET['token'])){
 
     i {
       position: relative;
-      left: 93%;
-      bottom: 2.5rem;
+      left: 90%;
+      bottom: 3.2rem;
       border: none;
       cursor: pointer;
+    }
+    .secondLi {
+      bottom: 2.3rem;
     }
 
     #logo {
@@ -150,9 +161,9 @@ if(isset($_GET['token'])){
               </svg><span class=" m-5 title fs-1">Reset</span>
               <form method="post">
                 <h3 class="mt-2" >Enter new Password</h3>
-                <input type="text" name="passF" id="passwordField" class="form-control my-4 py-2 passBox" placeholder="Password" />
-                <input type="text" name="cpassF" id="cPasswordField" class="form-control my-4 py-2 passBox" placeholder="Confirm Password" />
-                
+                <input type="password" autocomplete="off" name="passF" id="passwordField" class="form-control my-4 py-2 passBox" placeholder="Password" /><i class="bi bi-eye-slash" id="togglePassword1"> </i>
+                <input type="password" autocomplete="off" name="cpassF" id="cPasswordField" class="form-control my-1 py-2 passBox" placeholder="Confirm Password" /><i class="secondLi bi bi-eye-slash" id="togglePassword2"> </i>
+                <span class="form-text" id="displayer">&nbsp;</span>
                 <div class="text-center mt-3">
                   <button type="submit" name="sub" id="submForm" class="btn btn-primary">Reset</button>
                   <a href="./signup.php" class="nav-link">Don't have an Account yet? </a>
@@ -164,5 +175,7 @@ if(isset($_GET['token'])){
       </div>
     </div>
   </section>
+  <script src="./Resetscript.js"></script>
+  <script src="./toggle.js"></script>
 </body>
 </html>

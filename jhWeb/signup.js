@@ -7,6 +7,15 @@ $('form').submit( function(e) {
 var pass = $('#passwordField').val();
 
 
+ if(user.length < 4){
+    e.preventDefault();
+  $('span#displayer').text("Username too short");
+  $('span#displayer').addClass('warnings');
+  setTimeout(() => {
+  $('span#displayer').text(" Must be 6-10 characters long.");
+  $('span#displayer').removeClass('warnings');
+ }, 5000);
+  }
  if(pass.length < 6 && pass.length !=0){
     e.preventDefault();
   $('span#displayer').text("Password too weak!");

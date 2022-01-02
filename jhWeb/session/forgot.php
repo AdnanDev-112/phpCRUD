@@ -62,8 +62,8 @@ if (isset($_POST['sub'])) {
     </script>';
   }else{
     $Name = $data['username'];
-  $_SESSION['Tname'] = $data['username'];
-  $_SESSION['Tcrypt'] = $data['cryptkey'];
+  $_SESSION['Tn'] = $data['username'];
+  $_SESSION['Tc'] = $data['cryptkey'];
     $token = bin2hex(random_bytes(15));
     $setToken = "UPDATE `users` SET `token`= '$token' WHERE `email`= '$Email'";
     $setStatus = mysqli_query($connection,$setToken) or die(mysqli_error($connection));
