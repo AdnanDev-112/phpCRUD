@@ -6,6 +6,8 @@ include "connection.php";
 $cryptkey = $_SESSION['key'];
 
 
+$Font = $_SESSION['font'];
+
 $id = $_GET['updateid'];
 
 //To Display data in the fields
@@ -50,8 +52,25 @@ if (isset($_POST['sub'])) {
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Pushster&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    /* Fonts for notes */
+    @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+    .card-body,
+    body,
+    .form-control,
+    select {
+      background-color: rgb(255, 245, 225);
+    }
+
+    .form-control {
+      background-color: rgb(255, 246, 232);
+    }
 
     nav {
       font-family: 'Shizuru', cursive;
@@ -67,9 +86,14 @@ if (isset($_POST['sub'])) {
       color: red;
 
     }
+
     .container button {
-    font-family: 'Roboto', sans-serif;
-  }
+      font-family: 'Roboto', sans-serif;
+    }
+
+    textarea {
+      font-family: '<?= $Font ?>';
+    }
   </style>
 </head>
 
@@ -107,7 +131,7 @@ if (isset($_POST['sub'])) {
         <div class="card-body">
 
           <div class="form-group">
-            <textarea class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none;"><?= $Note ?></textarea>
+            <textarea class="form-control" id="addTxt" name="noteField" rows="3" style="resize: none;" placeholder="Update 📝"><?= $Note ?></textarea>
             <span class="mt-2 text-muted" id="characterCount"></span>
           </div>
           <button class="btn btn-primary mt-3" id="addBtn" name="sub" type="submit">Update</button>

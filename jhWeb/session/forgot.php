@@ -30,7 +30,7 @@ $mail->Password = "";
 // Set Subject
 $mail->Subject = "EasyNotes Password Reset";
 // Set Sender Email
-$mail->setFrom("");
+$mail->setFrom("Easy Notes");
 
 
 
