@@ -13,14 +13,10 @@ if (isset($_SESSION['loggedin'])) {
 
 if (isset($_POST['sub'])) {
 
-
-
-
   $Name = (string)$_POST['nameF'];
   $Email = (string)$_POST['emailF'];
   $Password = (string) $_POST['passF'];
   $Font = "Segoe UI";
-
 
 
   $hashed = md5($Password, FALSE);
@@ -28,13 +24,41 @@ if (isset($_POST['sub'])) {
   // Check if username already exists
   $checkName = "SELECT `username` FROM `users` WHERE `username` = '$Name'";
   $checkquery = mysqli_query($connection, $checkName);
-  if ($checkquery) {
+  if($checkquery->num_rows == 1){
+    $data = $checkquery->fetch_assoc();
+    $name = $data['username'];
+  }else{
+    $name = "";
+
+  }
+  
+  $checkEmail = "SELECT `email` FROM `users` WHERE `email` = '$Email';";
+  $chkEmail = mysqli_query($connection,$checkEmail);
+  if($chkEmail->num_rows == 1){
+    $data2 = $chkEmail->fetch_assoc();
+     $maill = $data2['email'];
+    }else{
+    $maill = "";
+
+  }
+ 
+
+  if ($Name == $name) {
     echo '<script>
         alert("Username Is Not Available");
         window.location.href = "./signup.php";
         
         </script>';
-  }
+   
+      }else if($Email == $maill){
+    echo '<script>
+        alert("Email Already Exists ");
+        window.location.href = "./signup.php";
+        
+        </script>';
+
+  }else{
+
 
   $sql = "INSERT INTO `users` (`username`,`email`, `password`,`cryptkey`,`font`) VALUES ('$Name','$Email', '$hashed','$cryptkey','$Font');";
   $result = mysqli_query($connection, $sql);
@@ -49,6 +73,9 @@ if (isset($_POST['sub'])) {
   } else {
     echo "Sql Failed" . mysqli_error($connection);
   }
+
+  }
+
 }
 
 

@@ -24,7 +24,7 @@ if (isset($_SESSION['loggedin'])) {
   
 if(isset($_GET['token'])){
     $token = $_GET['token'];
-    $checkToken = "SELECT `token` FROM `users` WHERE `token` = '$token' ";
+    $checkToken = "SELECT `token` FROM `users` WHERE `token` = '$token' ;";
 
     if(mysqli_query($connection,$checkToken)->num_rows == 0){
         unset($_SESSION['Tn']);
@@ -47,7 +47,7 @@ if(isset($_GET['token'])){
     $setFK = "SET FOREIGN_KEY_CHECKS = 0";
     mysqli_query($connection,$setFK);
     // Queries
-    $setPass = "UPDATE `users` SET `password`= '$hashed', `cryptkey` = '$cryptkey' WHERE `token`= '$token'";
+    $setPass = "UPDATE `users` SET `password`= '$hashed', `cryptkey` = '$cryptkey' WHERE `token`= '$token';";
     $setc =  "UPDATE `data` SET `cryptkey` = '$cryptkey' WHERE `cryptkey` = '$tempK';";
     $setStatus = mysqli_query($connection,$setPass) or die(mysqli_error($connection));
     $setC = mysqli_query($connection,$setc) or die(mysqli_error($connection));
@@ -105,7 +105,7 @@ if(isset($_GET['token'])){
     i {
       position: relative;
       left: 90%;
-      bottom: 3.2rem;
+      bottom: 3.5rem;
       border: none;
       cursor: pointer;
     }
